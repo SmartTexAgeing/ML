@@ -22,6 +22,8 @@ print(result)
 
 # Save trained model in h5-Format
 model.save('Model.h5')
+np.savetxt('input.txt', values, delimiter=',') 
+np.savetxt('labels.txt', labels, delimiter=',') 
 
 # Import Model
 model = tf.keras.models.load_model('Model.h5')

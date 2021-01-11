@@ -16,16 +16,18 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
 		with conn:
 			print('Connected by', addr)
 			data = conn.recv(1024)
-			filename = open(data, 'w')
-			conn.sendall(b'Received')
-
-			while True:
-				# In endless-loop
-				data = conn.recv(1024)
-				filename.write(str(data)[2:-1] + '\n')
-				if not data:
-					break
-				print('Received', repr(data))
-				conn.sendall(b'Received')
-			filename.close()
-
+            
+            if (".txt" in data):
+                filename = open(data, 'w')
+                while True:
+                    # In endless-loop
+                    data = conn.recv(1024)
+                    if not data:
+                        break
+                    filename.write(str(data)[2:-1] + '\n')
+                    print('Received', repr(data))
+                    conn.sendall(b'Received')
+                    filename.close()
+            else:
+                print('Received', repr(data))
+            conn.sendall(b'Received')
