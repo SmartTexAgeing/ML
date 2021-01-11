@@ -1,0 +1,3 @@
+/home/phillip/PycharmProjects/pythonProject/venv/bin/python3.8 /home/phillip/Documents/ML/train/generate_LinReg.py
+mv model.tflite ../test_data/raw/Model.tflite
+
